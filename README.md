@@ -2,6 +2,10 @@
 
 The ssd-web-app allows users to upload and view an image. The web app will run a TensorFlow SSD object detection model on the image to find the location of 80 classes of objects within the image including people, cats, dogs, and more.
 
+## Setup
+
+To start dev app run: `npm run dev`
+
 ## ToDo
  * update readme
  * system design chart

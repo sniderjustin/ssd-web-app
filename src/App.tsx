@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import ImgForm from './ImgForm';
 import './App.css';
+import ImgTest from './ImgTest';
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
       <div className='card'>
         <ImgForm />
       </div>
+      <ImgTest />
       <p className='read-the-docs'>Created by Chihiro & Justin Snider @2023</p>
     </div>
   );

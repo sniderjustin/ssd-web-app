@@ -4,6 +4,13 @@ The ssd-web-app allows users to upload and view an image. The web app will run a
 
 ## Setup
 
+To create project: `npm create vite@latest`
+reference [here](https://vitejs.dev/guide/)
+
+To install TensorFlow: `npm install @tensorflow/tfjs@3.11.0`
+
+To install SSD model: `npm install @tensorflow-models/coco-ssd`
+
 To start dev app run: `npm run dev`
 
 ## ToDo
@@ -16,6 +23,15 @@ To start dev app run: `npm run dev`
  * overlay text on image
 
  ## Resorces
+ * [TensorFlow.js](https://www.tensorflow.org/js)
+ * [Vite](https://vitejs.dev)
+ * [React](https://reactjs.org/)
+ * [TypeScript](https://www.typescriptlang.org/)
+ * [SSD Demo](https://glitch.com/~tensorflow-js-object-detection)
+ * [SSD Other Demo Article](https://towardsdatascience.com/how-to-use-tensorflow-js-in-react-js-object-detection-98b3782f08c2)
+ * [Other SSD Demo](https://github.com/manfye/tfjs-article-objDetection/blob/main/src/App.js)
+ * [Image upload Example](https://medium.com/geekculture/how-to-upload-and-preview-images-in-react-js-4e22a903f3db)
+
 
  ## Contributers
  * Chihiro Snider

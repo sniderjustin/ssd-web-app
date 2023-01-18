@@ -9,7 +9,7 @@ function App() {
       <div className='card'>
         <ImgForm />
       </div>
-      <ImgTest />
+
       <p className='read-the-docs'>Created by Chihiro & Justin Snider @2023</p>
     </div>
   );

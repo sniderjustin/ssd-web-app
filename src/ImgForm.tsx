@@ -7,6 +7,7 @@ function ImgForm() {
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
   const [model, setModel] = useState();
+  const [pred, setPred] = useState([]);
 
   // load cocoSad model
   async function loadModel() {
@@ -45,11 +46,67 @@ function ImgForm() {
   async function predictFunction() {
     const images = document.getElementsByClassName('input-image');
     console.log(images);
-    Array.from(images).forEach(async (image) => {
-      const predictions = await model.detect(image);
-      console.log('predictions');
-      console.log(predictions);
+    const wrappers = document.getElementsByClassName('image-wrapper');
+    Array.from(wrappers).forEach((wrap) => {
+      const images = wrap.getElementsByClassName('input-image');
+      Array.from(images).forEach((image) => {
+        const pred = model.detect(image).then(function(preds){
+          for (let n = 0; n < preds.length; n++) {
+            const pred = preds[n];
+            console.log('pred:',pred);
+            console.log('image:',image)
+            const p = document.createElement('p');
+            p.innerText = pred.class  + ' - with ' 
+                + Math.round(parseFloat(pred.score) * 100) 
+                + '% confidence.';
+            p.style = 'left: ' + pred.bbox[0] + 'px;' + 
+              'top: ' + pred.bbox[1] + 'px; ' + 
+              'width: ' + (pred.bbox[2] - 10) + 'px;';
+            const highlight = document.createElement('div');
+            highlight.setAttribute('class', 'highlight');
+            highlight.style = 'left: ' + pred.bbox[0] + 'px;' +
+                'top: ' + pred.bbox[1] + 'px;' +
+                'width: ' + pred.bbox[2] + 'px;' +
+                'height: ' + pred.bbox[3] + 'px;';
+            wrap.appendChild(highlight);
+            wrap.appendChild(p);
+            // predictions.push(pred);
+          };
+        });
+      });
     });
+    
+    // const imgArr = Array.from(images);
+    // const predictions = [];
+    // imgArr.forEach((image) => {
+    //   const pred = model.detect(image).then(function(preds){
+    //     for (let n = 0; n < preds.length; n++) {
+    //       const pred = preds[n];
+    //       console.log('pred:',pred);
+    //       console.log('image:',image)
+    //       const p = document.createElement('p');
+    //       p.innerText = pred.class  + ' - with ' 
+    //           + Math.round(parseFloat(pred.score) * 100) 
+    //           + '% confidence.';
+    //       p.style = 'left: ' + pred.bbox[0] + 'px;' + 
+    //         'top: ' + pred.bbox[1] + 'px; ' + 
+    //         'width: ' + (pred.bbox[2] - 10) + 'px;';
+    //       const highlight = document.createElement('div');
+    //       highlight.setAttribute('class', 'highlight');
+    //       highlight.style = 'left: ' + pred.bbox[0] + 'px;' +
+    //           'top: ' + pred.bbox[1] + 'px;' +
+    //           'width: ' + pred.bbox[2] + 'px;' +
+    //           'height: ' + pred.bbox[3] + 'px;';
+    //       image.appendChild(highlight);
+    //       image.appendChild(p);
+    //       predictions.push(pred);
+    //     };
+    //   });
+
+    // });
+    // console.log('predictions');
+    // console.log(predictions);
+    // setPred(predictions);
   }
 
   return (
@@ -63,13 +120,16 @@ function ImgForm() {
           onChange={onImageChange}
         ></input>
         {imageURLs.map((imageSrc) => (
-          <img
-            className='input-image'
-            crossOrigin='anonymous'
-            src={imageSrc}
-            key={imageSrc}
-            width={600}
-          />
+          <div
+            className='image-wrapper'
+          >
+            <img
+              className='input-image'
+              crossOrigin='anonymous'
+              src={imageSrc}
+              key={imageSrc}
+            />
+          </div>
         ))}
       </div>
       <button onClick={predictFunction}>Start Detect</button>

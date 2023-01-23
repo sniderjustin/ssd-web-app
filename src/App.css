@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 100vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -40,28 +40,39 @@
   color: #888;
 }
 
+.image {
+  display: flex;
+  flex-direction: column;
+}
+
 .image-wrapper {
+  display: flex;
+  flex-direction: column;
+
   position: relative;
   float: left;
   width: 48%;
-  margin: 2% 1%;
+  margin: auto;
   cursor: pointer;
 }
 
 .image-wrapper p {
-  position: absolute;
+  position: relative;
   padding: 5px;
-  background-color: rgba(255, 111, 0, 0.85);
-  color: #FFF;
+  background-color: rgba(0, 200, 255, 0.437);
+  color: #fff;
   border: 1px dashed rgba(255, 255, 255, 0.7);
+  border-radius: 7px;
   z-index: 2;
   font-size: 12px;
   margin: 0;
+  padding: 5px;
 }
 
 .highlight {
-  background: rgba(0, 255, 0, 0.25);
+  background: rgba(72, 255, 0, 0.182);
   border: 1px dashed #fff;
+  border-radius: 7px;
   z-index: 1;
   position: absolute;
 }
@@ -70,6 +81,17 @@
   z-index: 0;
 }
 
+.input-image {
+  border-radius: 50%;
+}
+
+.img-form {
+  margin-bottom: 50px;
+}
 /* .image-wrapper img {
   width: 100%;
 } */
+
+.predict-btn {
+  margin: 20px;
+}

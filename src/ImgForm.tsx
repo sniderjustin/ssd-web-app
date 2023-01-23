@@ -50,32 +50,26 @@ function ImgForm() {
     Array.from(wrappers).forEach((wrap) => {
       const images = wrap.getElementsByClassName('input-image');
       Array.from(images).forEach((image) => {
-        const pred = model.detect(image).then(function(preds){
+        const pred = model.detect(image).then(function (preds) {
           for (let n = 0; n < preds.length; n++) {
             const pred = preds[n];
-            console.log('pred:',pred);
-            console.log('image:',image)
+            console.log('pred:', pred);
+            console.log('image:', image);
             const p = document.createElement('p');
-            p.innerText = pred.class  + ' - with ' 
-                + Math.round(parseFloat(pred.score) * 100) 
-                + '% confidence.';
-            p.style = 'left: ' + pred.bbox[0] + 'px;' + 
-              'top: ' + pred.bbox[1] + 'px; ' + 
-              'width: ' + (pred.bbox[2] - 10) + 'px;';
+            p.innerText = pred.class + ' - with ' + Math.round(parseFloat(pred.score) * 100) + '% confidence.';
+            p.style = 'left: ' + pred.bbox[0] + 'px;' + 'top: ' + pred.bbox[1] + 'px; ' + 'width: ' + (pred.bbox[2] - 10) + 'px;';
             const highlight = document.createElement('div');
             highlight.setAttribute('class', 'highlight');
-            highlight.style = 'left: ' + pred.bbox[0] + 'px;' +
-                'top: ' + pred.bbox[1] + 'px;' +
-                'width: ' + pred.bbox[2] + 'px;' +
-                'height: ' + pred.bbox[3] + 'px;';
+            highlight.style =
+              'left: ' + pred.bbox[0] + 'px;' + 'top: ' + pred.bbox[1] + 'px;' + 'width: ' + pred.bbox[2] + 'px;' + 'height: ' + pred.bbox[3] + 'px;';
             wrap.appendChild(highlight);
             wrap.appendChild(p);
             // predictions.push(pred);
-          };
+          }
         });
       });
     });
-    
+
     // const imgArr = Array.from(images);
     // const predictions = [];
     // imgArr.forEach((image) => {
@@ -85,11 +79,11 @@ function ImgForm() {
     //       console.log('pred:',pred);
     //       console.log('image:',image)
     //       const p = document.createElement('p');
-    //       p.innerText = pred.class  + ' - with ' 
-    //           + Math.round(parseFloat(pred.score) * 100) 
+    //       p.innerText = pred.class  + ' - with '
+    //           + Math.round(parseFloat(pred.score) * 100)
     //           + '% confidence.';
-    //       p.style = 'left: ' + pred.bbox[0] + 'px;' + 
-    //         'top: ' + pred.bbox[1] + 'px; ' + 
+    //       p.style = 'left: ' + pred.bbox[0] + 'px;' +
+    //         'top: ' + pred.bbox[1] + 'px; ' +
     //         'width: ' + (pred.bbox[2] - 10) + 'px;';
     //       const highlight = document.createElement('div');
     //       highlight.setAttribute('class', 'highlight');
@@ -111,7 +105,7 @@ function ImgForm() {
 
   return (
     <div className='img-form'>
-      <h3>Upload Your Image Here</h3>
+      {!model ? <h3>SSD Loading...</h3> : <h3>Upload Your Image Here</h3>}
       <div className='image'>
         <input
           type='file'
@@ -122,17 +116,22 @@ function ImgForm() {
         {imageURLs.map((imageSrc) => (
           <div
             className='image-wrapper'
+            key={imageSrc}
           >
             <img
               className='input-image'
               crossOrigin='anonymous'
               src={imageSrc}
-              key={imageSrc}
             />
           </div>
         ))}
       </div>
-      <button onClick={predictFunction}>Start Detect</button>
+      <button
+        className='predict-btn'
+        onClick={predictFunction}
+      >
+        Start Detect
+      </button>
     </div>
   );
 }

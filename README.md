@@ -31,6 +31,7 @@ To start dev app run: `npm run dev`
  * [SSD Other Demo Article](https://towardsdatascience.com/how-to-use-tensorflow-js-in-react-js-object-detection-98b3782f08c2)
  * [Other SSD Demo](https://github.com/manfye/tfjs-article-objDetection/blob/main/src/App.js)
  * [Image upload Example](https://medium.com/geekculture/how-to-upload-and-preview-images-in-react-js-4e22a903f3db)
+ * [Drag & Drop image Example](https://medium.com/@denkyogbonnaya/how-to-upload-and-preview-image-with-drag-and-drop-in-react-de355b902207)
 
 
  ## Contributers

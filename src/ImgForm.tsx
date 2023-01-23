@@ -2,12 +2,16 @@ import { useState, useEffect } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import './App.css';
+import ImageUploader from './ImageUploader';
+
+const fileTypes = ['JPG', 'PNG', 'GIF'];
 
 function ImgForm() {
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
   const [model, setModel] = useState();
   const [pred, setPred] = useState([]);
+  const [file, setFile] = useState(null);
 
   // load cocoSad model
   async function loadModel() {
@@ -29,17 +33,20 @@ function ImgForm() {
   }, []);
 
   useEffect(() => {
-    if (images.length < 1) return;
-    const newImageUrls = [];
-    images.forEach((image) => {
-      newImageUrls.push(URL.createObjectURL(image));
-      setImageURLs(newImageUrls);
-    });
-  }, [images]);
+    if (!file) return;
+
+    setImageURLs(file);
+  }, []);
+
+  const handleChange = (file) => {
+    console.log('file from dragdrop: ', file.name);
+
+    setFile(file);
+  };
 
   function onImageChange(e) {
-    console.log('image uploaded!');
-    setImages([...e.target.files]);
+    // console.log('image uploaded!');
+    // setImages([...e.target.files]);
     // call image detection function
   }
 
@@ -105,33 +112,37 @@ function ImgForm() {
 
   return (
     <div className='img-form'>
-      {!model ? <h3>SSD Loading...</h3> : <h3>Upload Your Image Here</h3>}
-      <div className='image'>
-        <input
+      {!model ? <h3>SSD Loading...</h3> : <></>}
+      <ImageUploader />
+
+      {/* <div className='image'> */}
+      {/* <input
           type='file'
-          multiple
           accept='image/*'
           onChange={onImageChange}
-        ></input>
-        {imageURLs.map((imageSrc) => (
+        ></input> */}
+      {/* {file ? (
           <div
             className='image-wrapper'
-            key={imageSrc}
+            key={file}
           >
             <img
               className='input-image'
               crossOrigin='anonymous'
-              src={imageSrc}
+              src={file}
             />
           </div>
-        ))}
-      </div>
-      <button
+        ) : (
+          <p>Please upload an image</p>
+        )} */}
+      {/* </div> */}
+
+      {/* <button
         className='predict-btn'
         onClick={predictFunction}
       >
         Start Detect
-      </button>
+      </button> */}
     </div>
   );
 }

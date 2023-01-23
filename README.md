@@ -35,11 +35,7 @@ To start dev app run: `npm run dev`
 
 
  ## Contributers
-<<<<<<< chihiro/styling
- * Chihiro Snider
- * Justin Snider
-=======
+
  * Chihiro Snider | [GitHub](https://github.com/cheesehero112) | [LinkedIn](https://www.linkedin.com/in/chihiro-snider/)
  * Justin Snider  | [GitHub](https://github.com/sniderjustin) | [LinkedIn](https://www.linkedin.com/in/sniderj/)
  
->>>>>>> main

@@ -1,8 +1,18 @@
-#root {
-  max-width: 100vh;
-  margin: 0 auto;
-  padding: 2rem;
+* {
+  max-width: 100%;
+  margin: auto;
   text-align: center;
+  background-color: white;
+  color: rgb(13, 39, 3);
+}
+
+.title {
+  margin: 20px;
+}
+
+.root {
+  height: auto;
+  margin: 0px;
 }
 
 .logo {
@@ -17,7 +27,7 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
+/* @keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -30,15 +40,7 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+} */
 
 .image {
   display: flex;
@@ -48,10 +50,9 @@
 .image-wrapper {
   display: flex;
   flex-direction: column;
-
   position: relative;
   float: left;
-  width: 48%;
+  width: 60vh;
   margin: auto;
   cursor: pointer;
 }
@@ -82,7 +83,7 @@
 }
 
 .input-image {
-  border-radius: 50%;
+  border-radius: 7px;
 }
 
 .img-form {
@@ -94,4 +95,8 @@
 
 .predict-btn {
   margin: 20px;
+}
+
+.credit {
+  margin: 50px, auto;
 }

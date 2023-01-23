@@ -1,0 +1,36 @@
+.wrapper {
+  padding: 20px;
+}
+.drop_zone {
+  display: flex;
+  height: 200px;
+  width: 100%;
+  background: white;
+  background-size: 100px;
+  background-position: center;
+  background-color: #ffffff;
+  cursor: pointer;
+  color: rgb(13, 39, 3);
+  border: 2px dashed #ccc;
+  border-radius: 6px;
+  margin-bottom: 25px;
+  background-position: center 28px;
+}
+.drop_zone h3 {
+  margin: auto;
+  color: rgb(13, 39, 3);
+}
+.detection-txt {
+  margin: 20px, auto;
+  color: rgb(13, 39, 3);
+}
+.image {
+  width: 80vh;
+  height: 80vh;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.image img {
+  margin-bottom: 30px;
+}
